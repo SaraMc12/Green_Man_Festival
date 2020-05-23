@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  console: &rails
+    build: .
+    volumes:
+      - ./:/app
+    command: /bin/bash
+  server:
+    <<: *rails
+    ports:
+      - 3000:3000
+    command: rails s -b 0.0.0.0
